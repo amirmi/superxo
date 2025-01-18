@@ -1,0 +1,26 @@
+.parent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  width: fit-content;
+}
+
+.isDisabled {
+  filter: opacity(0.5);
+}
+.isDone {
+  position: absolute;
+  background: red;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.isDone > button {
+  background-color: green;
+  border-color: greenyellow;
+}

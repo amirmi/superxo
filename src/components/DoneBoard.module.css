@@ -1,0 +1,25 @@
+.doneBoard {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  top: 0px;
+  left: 0px;
+}
+
+.doneBoard > button {
+  height: 100%;
+  width: 100%;
+  font-size: 100px;
+  border: none;
+  outline: none;
+}
+
+.doneBoard:hover > button {
+  border-color: gray;
+  opacity: 0.1;
+  cursor: pointer;
+}
