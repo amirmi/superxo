@@ -22,35 +22,33 @@ function App() {
   };
 
   return (
-    <div className="appRoot">
-      <>
-        <div className="toolbox">
-          <span># of levels:</span>
-          <input
-            type="number"
-            min={1}
-            max={3}
-            value={levels}
-            onChange={(e) => {
-              setLevels(+e.target.value);
-              reset();
-            }}
-          />
-          <span> | </span>
-          <ResetButton onClick={reset} />
-          <span> | </span>
-          {winner == null ? (
-            <>
-              It's <Slot state={turn} isDisabled={false} />
-              Turn
-            </>
-          ) : (
-            <>
-              <Slot state={winner} isDisabled={false} /> Wins!
-            </>
-          )}
-        </div>
-      </>
+    <>
+      <div className="toolbox">
+        <span># of levels:</span>
+        <input
+          type="number"
+          min={1}
+          max={3}
+          value={levels}
+          onChange={(e) => {
+            setLevels(+e.target.value);
+            reset();
+          }}
+        />
+        <span> | </span>
+        <ResetButton onClick={reset} />
+        <span> | </span>
+        {winner == null ? (
+          <>
+            It's <Slot state={turn} isDisabled={false} />
+            Turn
+          </>
+        ) : (
+          <>
+            <Slot state={winner} isDisabled={false} /> Wins!
+          </>
+        )}
+      </div>
       <Board
         level={levels}
         turn={turn}
@@ -58,7 +56,7 @@ function App() {
         key={gameKey}
         onDone={setWinner}
       />
-    </div>
+    </>
   );
 }
 

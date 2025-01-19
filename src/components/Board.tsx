@@ -40,8 +40,6 @@ export default function Board({
   };
 
   const _onSetActiveBoard = (index: number | null, originLevel: number) => {
-    debugger;
-
     if (level == originLevel + 1) {
       setActiveBoard(index);
     }
