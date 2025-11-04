@@ -6,6 +6,7 @@ type Props = {
   onClick?: () => void;
   isDisabled: boolean;
   turn?: SlotState;
+  isGameDone?: boolean;
 };
 
 export default function Slot({
@@ -13,6 +14,7 @@ export default function Slot({
   onClick = () => {},
   isDisabled,
   turn,
+  isGameDone = false,
 }: Props) {
   const _onClick = () => {
     if (state != SlotState.NOTHING) {
@@ -36,6 +38,7 @@ export default function Slot({
         isDisabled && classes.isDisabled,
         state == SlotState.X && classes.x,
         state == SlotState.O && classes.o,
+        isGameDone && classes.isGameDone,
       ]
         .filter(Boolean)
         .join(" ")}

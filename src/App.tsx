@@ -3,11 +3,10 @@ import "./App.css";
 import Board from "./components/Board.tsx";
 import { SlotState } from "./types/SlotState.tsx";
 import ResetButton from "./components/ResetButton.tsx";
-import Slot from "./components/Slot.tsx";
 
 function App() {
   const [turn, setTurn] = useState<SlotState>(SlotState.X);
-  const [levels, setLevels] = useState<number>(1);
+  const [levels, setLevels] = useState<number | null>(null);
   const [gameKey, setGameKey] = useState<number>(0);
 
   const toggleTurn = () =>
@@ -21,42 +20,56 @@ function App() {
     setTurn(Math.random() > 0.5 ? SlotState.X : SlotState.O);
   };
 
-  return (
-    <>
-      <div className="toolbox">
-        <span># of levels:</span>
-        <input
-          type="number"
-          min={1}
-          max={3}
-          value={levels}
-          onChange={(e) => {
-            setLevels(+e.target.value);
-            reset();
-          }}
-        />
-        <span> | </span>
-        <ResetButton onClick={reset} />
-        <span> | </span>
-        {winner == null ? (
-          <>
-            It's <Slot state={turn} isDisabled={false} />
-            Turn
-          </>
-        ) : (
-          <>
-            <Slot state={winner} isDisabled={false} /> Wins!
-          </>
-        )}
+  const startGame = (gameLevels: number) => {
+    setLevels(gameLevels);
+    reset();
+  };
+
+  if (levels === null) {
+    return (
+      <div className="game-mode-selection">
+        <h1>Choose Your Game Mode</h1>
+        <div className="mode-buttons">
+          <button
+            className="mode-button simple-xo"
+            onMouseUp={() => setTimeout(() => startGame(1), 500)}
+          >
+            Simple XO
+          </button>
+          <button
+            className="mode-button super-xo"
+            onClick={() => setTimeout(() => startGame(2), 500)}
+          >
+            Super XO
+          </button>
+        </div>
       </div>
-      <Board
-        level={levels}
-        turn={turn}
-        toggleTurn={toggleTurn}
-        key={gameKey}
-        onDone={setWinner}
-      />
-    </>
+    );
+  }
+
+  const backgroundClass =
+    (winner ?? turn) === SlotState.X ? "x-turn-bg" : "o-turn-bg";
+
+  return (
+    <div className={`game-wrapper ${backgroundClass}`}>
+      <div className="top-left-controls">
+        <button className="back-button" onClick={() => setLevels(null)}>
+          ←
+        </button>
+        <ResetButton onClick={reset} />
+      </div>
+      <h1 className="game-title">{levels === 1 ? "Simple XO" : "Super XO"}</h1>
+      <div className="board-container">
+        {winner === null && <div className="turn-container">{turn}</div>}
+        <Board
+          level={levels}
+          turn={turn}
+          toggleTurn={toggleTurn}
+          key={gameKey}
+          onDone={setWinner}
+        />
+      </div>
+    </div>
   );
 }
 

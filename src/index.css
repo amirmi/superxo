@@ -22,11 +22,14 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: flex-start;
+  place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #242424;
+  background: linear-gradient(135deg, #ff9800 0%, #8e24aa 100%);
+
   color: white;
+  justify-content: center;
+  width: 100%;
 }
 
 h1 {

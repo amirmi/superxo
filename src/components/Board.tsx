@@ -11,13 +11,14 @@ export default function Board({
   turn,
   toggleTurn,
   isDisabled = false,
+  isGameDone = false,
   onSetActiveBoard = emptyFunction,
   onDone = emptyFunction,
 }: {
   level: number;
   turn: SlotState;
   toggleTurn: () => void;
-
+  isGameDone?: boolean;
   isDisabled?: boolean;
   onSetActiveBoard?: (
     newBoardIndex: number | null,
@@ -78,10 +79,11 @@ export default function Board({
   return (
     <div
       style={{
-        border: `${level != 2 ? 0 : 1}px dotted gray`,
         position: "relative",
-        width: "fit-content",
+        width: "100%",
+        height: "100%",
         padding: "10px",
+        boxSizing: "border-box",
       }}
     >
       <GridLayout isDisabled={isDisabled} level={level}>
@@ -92,6 +94,7 @@ export default function Board({
                 key={index}
                 state={slotState == null ? SlotState.NOTHING : slotState}
                 turn={turn}
+                isGameDone={isGameDone}
                 onClick={() => {
                   const newGrid = [...grid];
                   newGrid[index] = turn;
@@ -110,6 +113,7 @@ export default function Board({
               activeBoard !== null && activeBoard !== index;
             return (
               <Board
+                isGameDone={isDone}
                 key={index}
                 level={level - 1}
                 isDisabled={

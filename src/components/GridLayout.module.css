@@ -4,12 +4,11 @@
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  width: fit-content;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  font-size: min(8vw, 8vh, 80px);
 }
 
-.isDisabled {
-  filter: opacity(0.5);
-}
 .isDone {
   position: absolute;
   background: red;
