@@ -15,7 +15,7 @@ export default function GridLayout({
   return (
     <div
       style={{
-        gridGap: level * 5 + "px",
+        gridGap: level == 1 ? "3%" : "4%",
       }}
       className={[
         classes.parent,
