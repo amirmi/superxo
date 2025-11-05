@@ -1,4 +1,4 @@
-import { SyntheticEvent, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import Board from "./components/Board.tsx";
 import { SlotState } from "./types/SlotState.tsx";
@@ -25,23 +25,29 @@ function App() {
     reset();
   };
 
-  function onClick(gameLevels: number) {
-    return (e: SyntheticEvent) => {
-      e.preventDefault();
-      e.stopPropagation();
-      startGame(gameLevels);
-    };
-  }
-
   if (levels === null) {
     return (
       <div className="game-mode-selection">
         <h1>Choose Your Game Mode</h1>
         <div className="mode-buttons">
-          <button className="mode-button simple-xo" onMouseUp={onClick(1)}>
+          <button
+            className="mode-button simple-xo"
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+              setTimeout(() => startGame(1), 500);
+            }}
+          >
             Simple XO
           </button>
-          <button className="mode-button super-xo" onMouseUp={onClick(2)}>
+          <button
+            className="mode-button super-xo"
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+              setTimeout(() => startGame(2), 500);
+            }}
+          >
             Super XO
           </button>
         </div>
