@@ -57,10 +57,10 @@
   padding: 1rem;
   box-sizing: border-box;
   margin: 12px 12px;
-  touch-action: manipulation
+
 }
 
-.mode-button:active {
+/* .mode-button:active {
   transform: scale(1.05) rotate(5deg);
   border: 4px solid white;
   transform-origin: center;
@@ -72,7 +72,7 @@
 
 .super-xo:active {
    transform: rotate(5deg);
-}
+} */
 .simple-xo {
   background: linear-gradient(135deg, #ff99001c,  #ff9800);
 }
