@@ -1,5 +1,4 @@
 #root {
-  padding: 1rem;
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -22,7 +21,7 @@
   min-height: 100vh;
   gap: 40px;
   width: 100%;
-  padding: 1rem 0px;
+  padding: 3rem 0px;
   box-sizing: border-box;
 }
 
