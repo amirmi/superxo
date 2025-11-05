@@ -8,6 +8,7 @@ function App() {
   const [turn, setTurn] = useState<SlotState>(SlotState.X);
   const [levels, setLevels] = useState<number | null>(null);
   const [gameKey, setGameKey] = useState<number>(0);
+  const [isMounting, setIsMounting] = useState<boolean>(false);
 
   const toggleTurn = () =>
     setTurn((current) => (current === SlotState.X ? SlotState.O : SlotState.X));
@@ -21,8 +22,10 @@ function App() {
   };
 
   const startGame = (gameLevels: number) => {
+    setIsMounting(true);
     setLevels(gameLevels);
     reset();
+    setTimeout(() => setIsMounting(false), 600);
   };
 
   if (levels === null) {
@@ -32,20 +35,18 @@ function App() {
         <div className="mode-buttons">
           <button
             className="mode-button simple-xo"
-            onClick={(e) => {
-              e.stopPropagation();
+            onMouseDown={(e) => {
               e.preventDefault();
-              setTimeout(() => startGame(1), 500);
+              startGame(1);
             }}
           >
             Simple XO
           </button>
           <button
             className="mode-button super-xo"
-            onClick={(e) => {
-              e.stopPropagation();
+            onMouseDown={(e) => {
               e.preventDefault();
-              setTimeout(() => startGame(2), 500);
+              startGame(2);
             }}
           >
             Super XO
@@ -67,7 +68,10 @@ function App() {
         <ResetButton onClick={reset} />
       </div>
       <h1 className="game-title">{levels === 1 ? "Simple XO" : "Super XO"}</h1>
-      <div className="board-container">
+      <div
+        className="board-container"
+        style={{ pointerEvents: isMounting ? "none" : "auto" }}
+      >
         {winner === null && <div className="turn-container">{turn}</div>}
         <Board
           level={levels}
