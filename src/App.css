@@ -59,17 +59,17 @@
   margin: 12px 12px;
 }
 
-.mode-button:hover {
+.mode-button:active {
   transform: scale(1.05) rotate(5deg);
   border: 4px solid white;
   transform-origin: center;
 }
 
-.simple-xo:hover {
+.simple-xo:active {
    transform: rotate(-5deg);
 }
 
-.super-xo:hover {
+.super-xo:active {
    transform: rotate(5deg);
 }
 .simple-xo {

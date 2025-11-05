@@ -38,10 +38,10 @@ function App() {
       <div className="game-mode-selection">
         <h1>Choose Your Game Mode</h1>
         <div className="mode-buttons">
-          <button className="mode-button simple-xo" onClick={onClick(1)}>
+          <button className="mode-button simple-xo" onMouseUp={onClick(1)}>
             Simple XO
           </button>
-          <button className="mode-button super-xo" onClick={onClick(2)}>
+          <button className="mode-button super-xo" onMouseUp={onClick(2)}>
             Super XO
           </button>
         </div>
