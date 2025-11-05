@@ -67,19 +67,23 @@ function App() {
         </button>
         <ResetButton onClick={reset} />
       </div>
-      <h1 className="game-title">{levels === 1 ? "Simple XO" : "Super XO"}</h1>
-      <div
-        className="board-container"
-        style={{ pointerEvents: isMounting ? "none" : "auto" }}
-      >
-        {winner === null && <div className="turn-container">{turn}</div>}
-        <Board
-          level={levels}
-          turn={turn}
-          toggleTurn={toggleTurn}
-          key={gameKey}
-          onDone={setWinner}
-        />
+      <div className="center-container">
+        <h1 className="game-title">
+          {levels === 1 ? "Simple XO" : "Super XO"}
+        </h1>
+        <div
+          className="board-container"
+          style={{ pointerEvents: isMounting ? "none" : "auto" }}
+        >
+          {winner === null && <div className="turn-container">{turn}</div>}
+          <Board
+            level={levels}
+            turn={turn}
+            toggleTurn={toggleTurn}
+            key={gameKey}
+            onDone={setWinner}
+          />
+        </div>
       </div>
     </div>
   );
