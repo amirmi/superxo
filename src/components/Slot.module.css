@@ -15,6 +15,10 @@
   color: white;
 }
 
+.slot:focus {
+  outline: none;
+}
+
 .slot.isDisabled,
 .slot.isDisabled:hover {
   cursor: not-allowed;
@@ -43,6 +47,7 @@
 
 .slot.x {
   background-color: rgb(148, 0, 211, 1);
+  border-color: white;
 }
 
 .slot:active {
@@ -57,6 +62,7 @@
 
 .slot.o {
   background-color: rgb(255, 140, 0, 1);
+  border-color: white;
 }
 
 @media (max-width: 60px), (max-height: 60px) {
