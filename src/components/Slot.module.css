@@ -58,7 +58,7 @@
   background-color: rgb(255, 140, 0, 1);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 60px), (max-height: 60px) {
   .slot {
     font-size: 0;
   }
