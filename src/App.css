@@ -58,7 +58,10 @@
   padding: 1rem;
   box-sizing: border-box;
   margin: 12px 12px;
-
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
 }
 
 /* .mode-button:active {
