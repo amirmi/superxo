@@ -29,9 +29,7 @@ function App() {
     return (e: SyntheticEvent) => {
       e.preventDefault();
       e.stopPropagation();
-      setTimeout(() => {
-        startGame(gameLevels);
-      }, 500);
+      startGame(gameLevels);
     };
   }
 
