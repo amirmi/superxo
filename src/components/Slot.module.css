@@ -11,6 +11,7 @@
   align-items: center;
   justify-content: center;
   transition: transform 0.2s ease;
+  outline: none;
 }
 
 .slot.isDisabled,
@@ -39,20 +40,19 @@
   border-color: white;
 }
 
-
 .slot.x {
   background-color: rgb(148, 0, 211, 1);
+}
+
+.slot:active {
+  transform: rotate(-20deg);
+  outline: none;
 }
 
 .slot:nth-child(-n + 3):active {
   transform: rotate(20deg);
   outline: none;
 }
-.slot:active {
-  transform: rotate(-20deg);
-  outline: none;
-}
-
 
 .slot.o {
   background-color: rgb(255, 140, 0, 1);
